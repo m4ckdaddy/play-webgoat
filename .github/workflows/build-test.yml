@@ -101,8 +101,37 @@ jobs:
         # Fail the build upon findings. Takes true or false
         fail_build: false # optional
         # # Enter a case-sensitive, comma-separated list of name patterns that represent the names of the modules to scan as top-level modules. Veracode identifies these modules during prescan. The * wildcard matches zero or more characters. The ? wildcard matches exactly one character. For example, to include various module names that contain module: --include "module 1, module-*, module2.jar". The scan results show the names of the modules that Veracode identified and the modules included in the scan. This parameter does not pause, stop, or impact the performance of your pipeline.
-        # include: # optional
-    
+          # include: # optional
+# sca: 
+#   - name: Veracode Dependency Scanning
+#     # You may pin to the exact commit or the version.
+#     # uses: veracode/veracode-sca@f910b2a575b6c43db72a46a9334d0883f7c0a91a
+#     uses: veracode/veracode-sca@v2.1.9
+#     with:
+#       # Authorization token to query and create issues
+#       github_token: ${{ github.token }} # default is ${{ github.token }}
+#       # Run the SRCCLR with the `--quick` options
+#       #quick: # optional, default is false
+#       # Show update advisor
+#       update_advisor: true # optional, default is false
+#       # A git URL to work with in case the scan is not for the current repository
+#       #url: # optional, default is 
+#       # An attribute to instruct the action to create an issue from found vulnerability or just simple text output
+#       create-issues: true  # optional, default is false
+#       # A path within the repository where the build definition starts
+#       path: # optional, default is .
+#       # Run the SRCCLR in debug mode
+#       debug: # optional, default is false
+#       # Run the SRCCLR with the `--skip-collectors` options
+#       skip-collectors: # optional, default is false
+#       # Run the SRCCLR with the `--allow-dirty` option
+#       allow-dirty: # optional, default is false
+#       # Run the SRCCLR with the `--recursive` option
+#       recursive: # optional, default is false
+#       # Run the SRCCLR with the `--skip-vms` option
+#       skip-vms: # optional, default is false
+#       # Run the SRCCLR with the `--no-graphs` option
+#       no-graphs: # optional, default is false
   finish:
     name: Finish
     needs: # Should be last
