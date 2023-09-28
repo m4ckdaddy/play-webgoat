@@ -9,15 +9,15 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-#   tests:
-#     name: Tests
-#     uses: playframework/.github/.github/workflows/sbt-matrix.yml@v1
-#     with:
-#       java: >-
-#         [ "17", "11", "8" ]
-#       scala: >-
-#         [ "2.12.15", "2.13.8" ]
-#       cmd: sbt ++$SCALA_VERSION
+  tests:
+    name: Tests
+    uses: playframework/.github/.github/workflows/sbt-matrix.yml@v1
+    with:
+      java: >-
+        [ "17", "11", "8" ]
+      scala: >-
+        [ "2.12.15", "2.13.8" ]
+      cmd: sbt ++$SCALA_VERSION
   build:
     strategy:
       fail-fast: false
