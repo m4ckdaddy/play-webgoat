@@ -17,8 +17,24 @@ jobs:
         [ "17", "11", "8" ]
       scala: >-
         [ "2.12.15", "2.13.8" ]
-      cmd: sbt ++$SCALA_VERSION test
-
+      cmd: sbt ++$SCALA_VERSION
+  build:
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: coursier/cache-action@v6
+    - uses: actions/setup-java@v2
+      with:
+        distribution: temurin
+        java-version: 8
+    - name: Build
+      # https://docs.veracode.com/r/compilation_scala
+      run: sbt 'set scalacOptions += "-g:vars"' compile package
+    - name: CheckFiles
+      run: |
+        ls -la */**
   finish:
     name: Finish
     needs: # Should be last
